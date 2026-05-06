@@ -44,22 +44,22 @@
     syncUI();
   }
 
-  /* ---------- Timeline (positions only) ---------- */
-  function renderTimeline() {
-    const list = document.getElementById("timelineList");
+  /* ---------- Timeline (renders a category into a target list) ---------- */
+  function renderTimelineList(listId, category, idPrefix) {
+    const list = document.getElementById(listId);
     if (!list) return;
 
     const items = DATA.timeline
       .slice()
-      .filter((item) => item.category === "position")
+      .filter((item) => item.category === category)
       .sort((a, b) => a.sort - b.sort)
       .map((item, i) => {
         const li = document.createElement("li");
         li.className = "timeline__item";
         li.dataset.category = item.category;
 
-        const headerId = `tl-h-${i}`;
-        const panelId = `tl-p-${i}`;
+        const headerId = `${idPrefix}-h-${i}`;
+        const panelId = `${idPrefix}-p-${i}`;
 
         li.innerHTML = `
           <div class="timeline__year">${escapeHtml(item.year)}</div>
@@ -363,7 +363,8 @@
   /* ---------- Init ---------- */
   function init() {
     initTheme();
-    renderTimeline();
+    renderTimelineList("degreesList", "education", "deg");
+    renderTimelineList("timelineList", "position", "tl");
     renderModules();
     renderPhotos();
   }

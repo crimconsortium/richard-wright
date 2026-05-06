@@ -117,7 +117,7 @@ window.RW_DATA = {
       category: "position",
       title: "Curators’ Professor, University of Missouri–St. Louis",
       detail:
-        "Held the Curators’ Professorship in the Department of Criminology and Criminal Justice.",
+        "Held a Curators’ Professorship in the Department of Criminology and Criminal Justice.",
     },
     {
       year: "2008–2012",
@@ -155,7 +155,7 @@ window.RW_DATA = {
       year: "2014–2017",
       sort: 2014,
       category: "position",
-      title: "Professor, Georgia State University",
+      title: "Distinguished Professor, Georgia State University",
       detail:
         "Joined the Department of Criminal Justice and Criminology at Georgia State University.",
     },
