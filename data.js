@@ -215,6 +215,14 @@ window.RW_DATA = {
       title: "Books",
       items: [
         {
+          year: "1984",
+          sort: 1984,
+          authors: "Bennett, T., & Wright, R.",
+          title: "Burglars on Burglary: Prevention and the Offender.",
+          citation: "Gower.",
+          url: "https://www.ojp.gov/ncjrs/virtual-library/abstracts/burglars-burglary-prevention-and-offender",
+        },
+        {
           year: "1994",
           sort: 1994,
           authors: "Wright, R., & Decker, S.",
