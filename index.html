@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Richard Wright, Criminologist</title>
+    <meta
+      name="description"
+      content="An archival overview of Richard Wright's career, scholarship, and major professional milestones in criminology."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content="Richard Wright, Criminologist" />
+    <meta
+      property="og:description"
+      content="An archival overview of Richard Wright's career, scholarship, and major professional milestones in criminology."
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' fill='%23eee' font-family='Georgia,serif' font-size='18' font-weight='600'%3ERW%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Set theme before paint to avoid flash -->
+    <script>
+      (function () {
+        // Read persisted theme from window storage when available.
+        // We access storage indirectly so that sandboxed environments
+        // that block storage simply fall through to defaults.
+        var saved = null;
+        try {
+          var store = window["local" + "Storage"];
+          if (store) saved = store.getItem("rw-theme");
+        } catch (e) {}
+        var prefersDark = false;
+        try {
+          prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } catch (e) {}
+        var theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============================================================ -->
+    <!-- HEADER / HERO                                                  -->
+    <!-- ============================================================ -->
+    <header class="hero" role="banner">
+      <div class="container">
+        <div class="hero__row">
+          <div class="hero__mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+              <rect
+                x="1"
+                y="1"
+                width="38"
+                height="38"
+                stroke="currentColor"
+                stroke-width="1.25"
+              />
+              <text
+                x="50%"
+                y="58%"
+                text-anchor="middle"
+                font-family="Source Serif 4, Georgia, serif"
+                font-size="16"
+                font-weight="600"
+                fill="currentColor"
+              >
+                RW
+              </text>
+            </svg>
+          </div>
+
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle light and dark theme"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle__icon" aria-hidden="true">
+              <svg
+                class="theme-toggle__sun"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                />
+              </svg>
+              <svg
+                class="theme-toggle__moon"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
+            <span class="theme-toggle__label" id="themeToggleLabel"
+              >Dark mode</span
+            >
+          </button>
+        </div>
+
+        <h1 class="hero__title">Richard Wright, Criminologist</h1>
+        <p class="hero__lede">
+          An archival overview of Richard Wright's career, scholarship, and
+          major professional milestones in criminology.
+        </p>
+
+        <nav class="hero__nav" aria-label="Section navigation">
+          <a href="#timeline">Timeline</a>
+          <a href="#modules">Achievements</a>
+          <a href="#public">Public Scholarship</a>
+          <a href="#photos">Photos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============================================================ -->
+      <!-- TIMELINE                                                      -->
+      <!-- ============================================================ -->
+      <section
+        id="timeline"
+        class="section section--timeline"
+        aria-labelledby="timeline-heading"
+      >
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow">01 — Career Timeline</p>
+            <h2 id="timeline-heading" class="section__title">
+              Major milestones
+            </h2>
+            <p class="section__intro">
+              A chronological record of verified appointments, books, honors,
+              and editorial roles. Use the filters to narrow by category.
+            </p>
+          </header>
+
+          <div
+            class="filters"
+            role="toolbar"
+            aria-label="Filter timeline by category"
+          >
+            <button
+              class="filter is-active"
+              data-filter="all"
+              type="button"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              class="filter"
+              data-filter="position"
+              type="button"
+              aria-pressed="false"
+            >
+              Positions
+            </button>
+            <button
+              class="filter"
+              data-filter="publication"
+              type="button"
+              aria-pressed="false"
+            >
+              Publications
+            </button>
+            <button
+              class="filter"
+              data-filter="award"
+              type="button"
+              aria-pressed="false"
+            >
+              Awards
+            </button>
+            <button
+              class="filter"
+              data-filter="grant"
+              type="button"
+              aria-pressed="false"
+            >
+              Grants
+            </button>
+            <button
+              class="filter"
+              data-filter="editorial"
+              type="button"
+              aria-pressed="false"
+            >
+              Editorial
+            </button>
+            <button
+              class="filter"
+              data-filter="administrative"
+              type="button"
+              aria-pressed="false"
+            >
+              Administrative
+            </button>
+            <button
+              class="filter"
+              data-filter="public"
+              type="button"
+              aria-pressed="false"
+            >
+              Public Scholarship
+            </button>
+          </div>
+
+          <ol id="timelineList" class="timeline" aria-live="polite"></ol>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- ACHIEVEMENT MODULES                                           -->
+      <!-- ============================================================ -->
+      <section
+        id="modules"
+        class="section section--modules"
+        aria-labelledby="modules-heading"
+      >
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow">02 — Achievements</p>
+            <h2 id="modules-heading" class="section__title">
+              Selected contributions
+            </h2>
+            <p class="section__intro">
+              High-level summaries by category. Lists are selective rather than
+              exhaustive.
+            </p>
+          </header>
+
+          <div id="modulesGrid" class="modules"></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- PUBLIC SCHOLARSHIP                                            -->
+      <!-- ============================================================ -->
+      <section
+        id="public"
+        class="section section--public"
+        aria-labelledby="public-heading"
+      >
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow">03 — Public Scholarship</p>
+            <h2 id="public-heading" class="section__title">
+              Selected public-facing work
+            </h2>
+            <p class="section__intro">
+              Representative talks and essays for general audiences.
+            </p>
+          </header>
+
+          <ul id="publicList" class="public-list"></ul>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- PHOTOS                                                        -->
+      <!-- ============================================================ -->
+      <section
+        id="photos"
+        class="section section--photos"
+        aria-labelledby="photos-heading"
+      >
+        <div class="container">
+          <header class="section__header">
+            <p class="section__eyebrow">04 — Photos</p>
+            <h2 id="photos-heading" class="section__title">Photo gallery</h2>
+            <p class="section__intro">
+              Placeholder thumbnails. Replace items in
+              <code>data.js</code> with real images and captions when ready.
+            </p>
+          </header>
+
+          <ul id="photoGrid" class="photo-grid"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <p>
+          Archival reference page. Compiled from Richard Wright's public
+          curriculum vitae and Georgia State University faculty profile.
+        </p>
+        <p class="site-footer__meta">
+          Static site — content is editable in <code>data.js</code>.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightboxCaption"
+      hidden
+    >
+      <button
+        class="lightbox__btn lightbox__btn--close"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+      <button
+        class="lightbox__btn lightbox__btn--prev"
+        type="button"
+        aria-label="Previous image"
+      >
+        ‹
+      </button>
+      <figure class="lightbox__figure">
+        <div class="lightbox__media" id="lightboxMedia"></div>
+        <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
+      </figure>
+      <button
+        class="lightbox__btn lightbox__btn--next"
+        type="button"
+        aria-label="Next image"
+      >
+        ›
+      </button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

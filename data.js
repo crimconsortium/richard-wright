@@ -1,0 +1,417 @@
+/* ==============================================================
+   Richard Wright — Site Content
+   --------------------------------------------------------------
+   This file is the single source of truth for everything on the
+   page. Edit the arrays below to update milestones, modules,
+   public scholarship items, or photos. No HTML changes required.
+
+   Categories used by the timeline filter:
+     "position"        Positions
+     "publication"     Publications
+     "award"           Awards
+     "grant"           Grants
+     "editorial"       Editorial Leadership
+     "administrative"  Administrative Leadership
+     "public"          Public Scholarship
+   ============================================================== */
+
+window.RW_DATA = {
+  /* ------------------------------------------------------------
+     TIMELINE — major verified milestones only.
+     Keep entries chronological. Use a single year ("1994") or a
+     range ("1980-1982"). `sort` is the numeric year used for
+     ordering (start year for ranges).
+     ------------------------------------------------------------ */
+  timeline: [
+    {
+      year: "1974",
+      sort: 1974,
+      category: "position",
+      title: "B.A., Social Ecology",
+      detail:
+        "Bachelor of Arts in Social Ecology, University of California, Irvine.",
+    },
+    {
+      year: "1976",
+      sort: 1976,
+      category: "position",
+      title: "M.A., Social Ecology",
+      detail:
+        "Master of Arts in Social Ecology, University of California, Irvine.",
+    },
+    {
+      year: "1980",
+      sort: 1980,
+      category: "position",
+      title: "Ph.D., Criminology — University of Cambridge",
+      detail:
+        "Doctorate awarded by the Institute of Criminology, University of Cambridge.",
+    },
+    {
+      year: "1980–1982",
+      sort: 1980.1,
+      category: "position",
+      title: "Research Associate, Institute of Criminology, Cambridge",
+      detail:
+        "Postdoctoral research at the Institute of Criminology, Cambridge University.",
+    },
+    {
+      year: "1982–1984",
+      sort: 1982,
+      category: "position",
+      title: "Senior Research Associate, Institute of Criminology, Cambridge",
+      detail:
+        "Promoted to Senior Research Associate at the Institute of Criminology, Cambridge University.",
+    },
+    {
+      year: "1984–1987",
+      sort: 1984,
+      category: "position",
+      title: "Assistant Professor, University of Missouri–St. Louis",
+      detail:
+        "Department of Criminology and Criminal Justice; concurrently Research Fellow at the Center for Metropolitan Studies.",
+    },
+    {
+      year: "1987–1995",
+      sort: 1987,
+      category: "position",
+      title: "Associate Professor, University of Missouri–St. Louis",
+      detail:
+        "Department of Criminology and Criminal Justice; continued affiliation as Research Fellow, Center for Metropolitan Studies.",
+    },
+    {
+      year: "1994",
+      sort: 1994,
+      category: "publication",
+      title: "Burglars on the Job (with Scott Decker)",
+      detail:
+        "Burglars on the Job: Streetlife and Residential Break-Ins, co-authored with Scott Decker. A formative ethnographic study of active residential burglars.",
+    },
+    {
+      year: "1995–2004",
+      sort: 1995,
+      category: "position",
+      title: "Professor, University of Missouri–St. Louis",
+      detail:
+        "Promoted to Professor in the Department of Criminology and Criminal Justice, University of Missouri–St. Louis.",
+    },
+    {
+      year: "1997",
+      sort: 1997,
+      category: "publication",
+      title: "Armed Robbers in Action (with Scott Decker)",
+      detail:
+        "Armed Robbers in Action: Stickups and Street Culture, co-authored with Scott Decker.",
+    },
+    {
+      year: "2005",
+      sort: 2005,
+      category: "award",
+      title: "Appointed Curators’ Professor",
+      detail:
+        "Named Curators’ Professor by the University of Missouri — among the highest honors conferred on faculty in the UM system.",
+    },
+    {
+      year: "2005–2014",
+      sort: 2005.1,
+      category: "position",
+      title: "Curators’ Professor, University of Missouri–St. Louis",
+      detail:
+        "Held the Curators’ Professorship in the Department of Criminology and Criminal Justice.",
+    },
+    {
+      year: "2008–2012",
+      sort: 2008,
+      category: "editorial",
+      title: "Editor-in-Chief, British Journal of Sociology",
+      detail:
+        "Served as Editor-in-Chief of the British Journal of Sociology following a year as North-American-based Editor (2007–2008).",
+    },
+    {
+      year: "2009",
+      sort: 2009,
+      category: "award",
+      title: "Elected Fellow, American Society of Criminology",
+      detail:
+        "Elected a Fellow of the American Society of Criminology — a recognition of sustained, distinguished scholarly contributions to the field.",
+    },
+    {
+      year: "2011",
+      sort: 2011,
+      category: "award",
+      title: "Chancellor’s Award for Excellence in Service",
+      detail:
+        "University of Missouri–St. Louis Chancellor’s Award for Excellence in Service.",
+    },
+    {
+      year: "2012–2014",
+      sort: 2012,
+      category: "editorial",
+      title: "Editor-in-Chief, Oxford Bibliographies Online (Criminology)",
+      detail:
+        "Served as Editor-in-Chief of the Criminology module of Oxford Bibliographies Online.",
+    },
+    {
+      year: "2014–2017",
+      sort: 2014,
+      category: "position",
+      title: "Professor, Georgia State University",
+      detail:
+        "Joined the Department of Criminal Justice and Criminology at Georgia State University.",
+    },
+    {
+      year: "2014–2018",
+      sort: 2014.1,
+      category: "administrative",
+      title:
+        "Chair, Department of Criminal Justice and Criminology, Georgia State",
+      detail:
+        "Chaired the Department of Criminal Justice and Criminology at Georgia State University.",
+    },
+    {
+      year: "2015",
+      sort: 2015,
+      category: "publication",
+      title: "Code of the Suburb (with Scott Jacques)",
+      detail:
+        "Code of the Suburb: Inside the World of Young Middle-Class Drug Dealers, co-authored with Scott Jacques.",
+    },
+    {
+      year: "2016",
+      sort: 2016,
+      category: "public",
+      title: "TEDx Peachtree — The Ripple Effects of a Cashless Society",
+      detail:
+        "Delivered a TEDx Peachtree talk on the criminological implications of declining cash use.",
+    },
+    {
+      year: "2017",
+      sort: 2017,
+      category: "award",
+      title: "Appointed Regents’ Professor",
+      detail:
+        "Named Regents’ Professor by the University System of Georgia — the system’s highest professorial distinction.",
+    },
+    {
+      year: "2017–2023",
+      sort: 2017.1,
+      category: "position",
+      title: "Regents’ Professor, Georgia State University",
+      detail:
+        "Held the Regents’ Professorship in the Department of Criminal Justice and Criminology, Georgia State University.",
+    },
+  ],
+
+  /* ------------------------------------------------------------
+     ACHIEVEMENT MODULES — selective summaries by category.
+     Each item supports an optional <strong> via the `lead` field.
+     ------------------------------------------------------------ */
+  modules: [
+    {
+      label: "Books",
+      title: "Selected books",
+      items: [
+        {
+          lead: "Burglars on the Job",
+          text: " (1994), with Scott Decker — ethnography of active residential burglars.",
+        },
+        {
+          lead: "Armed Robbers in Action",
+          text: " (1997), with Scott Decker — street-level analysis of stickup offenders.",
+        },
+        {
+          lead: "Street Justice",
+          text: " (2006), with Bruce Jacobs — retaliation and informal social control on the street.",
+        },
+        {
+          lead: "Code of the Suburb",
+          text: " (2015), with Scott Jacques — middle-class adolescent drug dealers in suburban Atlanta.",
+        },
+      ],
+    },
+    {
+      label: "Honors",
+      title: "Major honors",
+      items: [
+        {
+          lead: "Fellow, American Society of Criminology",
+          text: " (2009).",
+        },
+        {
+          lead: "Regents’ Professor",
+          text: ", University System of Georgia (2017).",
+        },
+        {
+          lead: "Curators’ Professor",
+          text: ", University of Missouri (2005).",
+        },
+        {
+          lead: "Chancellor’s Award for Excellence in Research",
+          text: ", UM–St. Louis (2004).",
+        },
+        {
+          lead: "Chancellor’s Award for Excellence in Service",
+          text: ", UM–St. Louis (2011).",
+        },
+      ],
+    },
+    {
+      label: "Grants",
+      title: "Selected external grants",
+      items: [
+        {
+          lead: "National Science Foundation",
+          text: " (2008–2010) — research on offender decision-making.",
+        },
+        {
+          lead: "Irish Research Council",
+          text: " (2003–2006) — comparative fieldwork on offending.",
+        },
+        {
+          lead: "Harry Frank Guggenheim Foundation",
+          text: " — multiple awards supporting research on violence.",
+        },
+        {
+          lead: "National Consortium on Violence Research",
+          text: " — funded studies on street-level violence.",
+        },
+        {
+          lead: "National Institute of Justice",
+          text: " — multiple grants on offender behavior and crime control.",
+        },
+        {
+          lead: "U.S. Department of Education",
+          text: " — funding for graduate training in criminology.",
+        },
+      ],
+    },
+    {
+      label: "Editorial Leadership",
+      title: "Editorial roles",
+      items: [
+        {
+          lead: "Editor-in-Chief, British Journal of Sociology",
+          text: " (2008–2012); North-American-based Editor (2007–2008).",
+        },
+        {
+          lead: "Editor-in-Chief, Oxford Bibliographies Online: Criminology",
+          text: " (2012–2014).",
+        },
+        {
+          lead: "Editorial advisory roles",
+          text: " for the British Journal of Criminology, the British Journal of Sociology, and the Oxford Research Encyclopedia.",
+        },
+      ],
+    },
+    {
+      label: "Administrative Leadership",
+      title: "Departmental leadership",
+      items: [
+        {
+          lead: "Chair, Department of Criminology and Criminal Justice",
+          text: ", University of Missouri–St. Louis.",
+        },
+        {
+          lead: "Chair, Department of Criminal Justice and Criminology",
+          text: ", Georgia State University (2014–2018).",
+        },
+      ],
+    },
+    {
+      label: "Public Scholarship",
+      title: "Public-facing work",
+      items: [
+        {
+          lead: "TEDx Peachtree",
+          text: " (2016) — The Ripple Effects of a Cashless Society.",
+        },
+        {
+          lead: "The Conversation",
+          text: " — essays on policing, urban unrest, and crime policy.",
+        },
+        {
+          lead: "Newsweek and other outlets",
+          text: " — commentary translating research for general readers.",
+        },
+      ],
+    },
+  ],
+
+  /* ------------------------------------------------------------
+     PUBLIC SCHOLARSHIP — selected, not exhaustive.
+     ------------------------------------------------------------ */
+  publicScholarship: [
+    {
+      year: "2018",
+      title: "College-Educated Cops Enforce the Law More Aggressively",
+      venue: "The Conversation",
+    },
+    {
+      year: "2016",
+      title: "The Ripple Effects of a Cashless Society",
+      venue: "TEDx Peachtree",
+    },
+    {
+      year: "2015",
+      title: "Why Ferguson Erupts",
+      venue: "The Conversation",
+    },
+    {
+      year: "2015",
+      title: "It Might Have Happened in Any City Suburb. So Why Ferguson?",
+      venue: "Newsweek",
+    },
+  ],
+
+  /* ------------------------------------------------------------
+     PHOTOS — placeholder gallery.
+     To add real images, set `src` to the file path (e.g.
+     "images/portrait-2017.jpg"). When `src` is empty, a neutral
+     placeholder card is shown automatically.
+     Captions, year, and alt text appear in the lightbox.
+     ------------------------------------------------------------ */
+  photos: [
+    {
+      src: "",
+      placeholder: "Portrait placeholder",
+      caption: "Faculty portrait",
+      year: "",
+      alt: "Placeholder for a faculty portrait of Richard Wright.",
+    },
+    {
+      src: "",
+      placeholder: "Conference placeholder",
+      caption: "Conference appearance",
+      year: "",
+      alt: "Placeholder for a photograph from a professional conference.",
+    },
+    {
+      src: "",
+      placeholder: "Colleagues placeholder",
+      caption: "With colleagues",
+      year: "",
+      alt: "Placeholder for a photograph with academic colleagues.",
+    },
+    {
+      src: "",
+      placeholder: "Archive placeholder",
+      caption: "Archival image",
+      year: "",
+      alt: "Placeholder for an archival image from earlier in the career.",
+    },
+    {
+      src: "",
+      placeholder: "Lecture placeholder",
+      caption: "Public lecture",
+      year: "",
+      alt: "Placeholder for a public lecture or talk.",
+    },
+    {
+      src: "",
+      placeholder: "Fieldwork placeholder",
+      caption: "Research and fieldwork",
+      year: "",
+      alt: "Placeholder for a research or fieldwork-related image.",
+    },
+  ],
+};

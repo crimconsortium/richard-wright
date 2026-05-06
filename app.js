@@ -1,0 +1,317 @@
+/* ==============================================================
+   Richard Wright — App logic
+   - Theme toggle (persisted)
+   - Timeline rendering + filtering + expand/collapse
+   - Modules, public scholarship, photo grid rendering
+   - Photo lightbox with keyboard nav (arrow keys, escape)
+   ============================================================== */
+
+(function () {
+  "use strict";
+
+  const DATA = window.RW_DATA;
+  if (!DATA) return;
+
+  /* ---------- Helpers ---------- */
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) =>
+    Array.prototype.slice.call(root.querySelectorAll(sel));
+
+  const CATEGORY_LABELS = {
+    position: "Position",
+    publication: "Publication",
+    award: "Award",
+    grant: "Grant",
+    editorial: "Editorial",
+    administrative: "Administrative",
+    public: "Public Scholarship",
+  };
+
+  /* ---------- Theme ---------- */
+  function initTheme() {
+    const root = document.documentElement;
+    const btn = document.getElementById("themeToggle");
+    const label = document.getElementById("themeToggleLabel");
+
+    function syncUI() {
+      const theme = root.getAttribute("data-theme") || "light";
+      btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      label.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+    }
+
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || "light";
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      // Persist preference where storage is available; silently skip otherwise.
+      try {
+        var store = window["local" + "Storage"];
+        if (store) store.setItem("rw-theme", next);
+      } catch (e) {}
+      syncUI();
+    });
+
+    syncUI();
+  }
+
+  /* ---------- Timeline ---------- */
+  function renderTimeline() {
+    const list = document.getElementById("timelineList");
+    if (!list) return;
+
+    const items = DATA.timeline
+      .slice()
+      .sort((a, b) => a.sort - b.sort)
+      .map((item, i) => {
+        const li = document.createElement("li");
+        li.className = "timeline__item";
+        li.dataset.category = item.category;
+
+        const headerId = `tl-h-${i}`;
+        const panelId = `tl-p-${i}`;
+
+        li.innerHTML = `
+          <div class="timeline__year">${escapeHtml(item.year)}</div>
+          <div class="timeline__body">
+            <button
+              class="timeline__head"
+              type="button"
+              id="${headerId}"
+              aria-expanded="false"
+              aria-controls="${panelId}"
+            >
+              <h3 class="timeline__title">${escapeHtml(item.title)}</h3>
+              <span class="timeline__cat">${escapeHtml(
+                CATEGORY_LABELS[item.category] || ""
+              )}</span>
+              <svg class="timeline__caret" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 6l5 5 5-5"/>
+              </svg>
+            </button>
+            <div class="timeline__detail" id="${panelId}" role="region" aria-labelledby="${headerId}">
+              <div>
+                <p>${escapeHtml(item.detail)}</p>
+              </div>
+            </div>
+          </div>
+        `;
+
+        const head = $(".timeline__head", li);
+        head.addEventListener("click", () => {
+          const expanded = head.getAttribute("aria-expanded") === "true";
+          head.setAttribute("aria-expanded", expanded ? "false" : "true");
+        });
+
+        return li;
+      });
+
+    items.forEach((el) => list.appendChild(el));
+
+    /* Filters */
+    const filters = $$(".filter");
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const value = btn.dataset.filter;
+        filters.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        $$(".timeline__item", list).forEach((li) => {
+          const match = value === "all" || li.dataset.category === value;
+          li.classList.toggle("is-hidden", !match);
+        });
+      });
+    });
+  }
+
+  /* ---------- Modules ---------- */
+  function renderModules() {
+    const grid = document.getElementById("modulesGrid");
+    if (!grid) return;
+
+    DATA.modules.forEach((mod) => {
+      const el = document.createElement("article");
+      el.className = "module";
+      el.innerHTML = `
+        <p class="module__label">${escapeHtml(mod.label)}</p>
+        <h3 class="module__title">${escapeHtml(mod.title)}</h3>
+        <ul class="module__list">
+          ${mod.items
+            .map(
+              (it) => `
+            <li>${
+              it.lead ? `<strong>${escapeHtml(it.lead)}</strong>` : ""
+            }${escapeHtml(it.text || "")}</li>
+          `
+            )
+            .join("")}
+        </ul>
+      `;
+      grid.appendChild(el);
+    });
+  }
+
+  /* ---------- Public scholarship ---------- */
+  function renderPublic() {
+    const list = document.getElementById("publicList");
+    if (!list) return;
+    DATA.publicScholarship.forEach((p) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <span class="pub-year">${escapeHtml(p.year)}</span>
+        <span class="pub-title">${escapeHtml(p.title)}</span>
+        <span class="pub-venue">${escapeHtml(p.venue)}</span>
+      `;
+      list.appendChild(li);
+    });
+  }
+
+  /* ---------- Photos + Lightbox ---------- */
+  function renderPhotos() {
+    const grid = document.getElementById("photoGrid");
+    if (!grid) return;
+
+    DATA.photos.forEach((photo, i) => {
+      const li = document.createElement("li");
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "photo-card";
+      card.setAttribute(
+        "aria-label",
+        `Open ${photo.caption || photo.placeholder || "image"} in viewer`
+      );
+      card.dataset.index = String(i);
+
+      const media = photo.src
+        ? `<img src="${escapeAttr(photo.src)}" alt="${escapeAttr(
+            photo.alt || photo.caption || ""
+          )}" loading="lazy" />`
+        : `<span class="photo-card__placeholder">${escapeHtml(
+            photo.placeholder || "Image placeholder"
+          )}</span>`;
+
+      card.innerHTML = `
+        <div class="photo-card__media">${media}</div>
+        <div class="photo-card__meta">
+          <span class="photo-card__caption">${escapeHtml(
+            photo.caption || photo.placeholder || ""
+          )}</span>
+          ${
+            photo.year
+              ? `<span class="photo-card__year">${escapeHtml(
+                  photo.year
+                )}</span>`
+              : ""
+          }
+        </div>
+      `;
+
+      card.addEventListener("click", () => openLightbox(i));
+      li.appendChild(card);
+      grid.appendChild(li);
+    });
+
+    initLightbox();
+  }
+
+  /* ---------- Lightbox ---------- */
+  let lbIndex = 0;
+  let lbLastFocus = null;
+
+  function initLightbox() {
+    const lb = document.getElementById("lightbox");
+    if (!lb) return;
+    $(".lightbox__btn--close", lb).addEventListener("click", closeLightbox);
+    $(".lightbox__btn--prev", lb).addEventListener("click", () => step(-1));
+    $(".lightbox__btn--next", lb).addEventListener("click", () => step(1));
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (lb.hasAttribute("hidden")) return;
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") step(-1);
+      else if (e.key === "ArrowRight") step(1);
+    });
+  }
+
+  function openLightbox(index) {
+    lbIndex = index;
+    lbLastFocus = document.activeElement;
+    const lb = document.getElementById("lightbox");
+    lb.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+    renderLightbox();
+    $(".lightbox__btn--close", lb).focus();
+  }
+
+  function closeLightbox() {
+    const lb = document.getElementById("lightbox");
+    lb.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+    if (lbLastFocus && typeof lbLastFocus.focus === "function") {
+      lbLastFocus.focus();
+    }
+  }
+
+  function step(delta) {
+    const n = DATA.photos.length;
+    if (!n) return;
+    lbIndex = (lbIndex + delta + n) % n;
+    renderLightbox();
+  }
+
+  function renderLightbox() {
+    const photo = DATA.photos[lbIndex];
+    if (!photo) return;
+    const media = document.getElementById("lightboxMedia");
+    const cap = document.getElementById("lightboxCaption");
+
+    media.innerHTML = photo.src
+      ? `<img src="${escapeAttr(photo.src)}" alt="${escapeAttr(
+          photo.alt || photo.caption || ""
+        )}" />`
+      : `<span class="placeholder">${escapeHtml(
+          photo.placeholder || "Image placeholder"
+        )}</span>`;
+
+    cap.innerHTML = `
+      ${escapeHtml(photo.caption || photo.placeholder || "")}
+      ${
+        photo.year
+          ? `<span class="lb-year">${escapeHtml(photo.year)}</span>`
+          : ""
+      }
+    `;
+  }
+
+  /* ---------- Utilities ---------- */
+  function escapeHtml(str) {
+    if (str == null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+  function escapeAttr(str) {
+    return escapeHtml(str);
+  }
+
+  /* ---------- Init ---------- */
+  function init() {
+    initTheme();
+    renderTimeline();
+    renderModules();
+    renderPublic();
+    renderPhotos();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
