@@ -167,7 +167,7 @@ code {
 }
 
 .section {
-  padding: clamp(var(--s-16), 9vw, var(--s-24)) 0;
+  padding: clamp(var(--s-10), 5vw, var(--s-16)) 0;
   border-top: 1px solid var(--rule);
 }
 .section:first-of-type {
@@ -175,7 +175,7 @@ code {
 }
 
 .section__header {
-  margin-bottom: var(--s-12);
+  margin-bottom: var(--s-6);
 }
 .section__eyebrow {
   font-family: var(--sans);
@@ -202,7 +202,7 @@ code {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: var(--s-8) 0 clamp(var(--s-12), 8vw, var(--s-20));
+  padding: var(--s-6) 0 clamp(var(--s-8), 4vw, var(--s-12));
   border-bottom: 1px solid var(--rule);
 }
 .hero__row {
@@ -210,7 +210,7 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: var(--s-4);
-  margin-bottom: clamp(var(--s-12), 8vw, var(--s-16));
+  margin-bottom: clamp(var(--s-6), 4vw, var(--s-10));
 }
 .hero__mark {
   color: var(--fg);
@@ -228,7 +228,7 @@ code {
   font-size: var(--text-md);
   line-height: 1.55;
   color: var(--fg-muted);
-  margin: 0 0 var(--s-10);
+  margin: 0 0 var(--s-6);
 }
 .hero__nav {
   display: flex;
