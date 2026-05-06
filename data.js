@@ -461,6 +461,36 @@ window.RW_DATA = {
       url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2011.00234.x",
     },
     {
+      year: "2011",
+      sort: 2011.1,
+      journalTag: "Addiction Res. & Theory",
+      authors: "Bennett, T., Jacques, S., & Wright, R.",
+      title: "The emergence and evolution of drug user groups in the UK.",
+      citation: "Addiction Research & Theory, 19(6), 556–565.",
+      url: "https://scottjacques.pubpub.org/pub/theemergenceandevolutionofdrugusergroupsintheuk/release/3",
+    },
+    {
+      year: "2015",
+      sort: 2015,
+      journalTag: "Aggression & Violent Behavior",
+      authors: "Topalli, V., Jacques, S., & Wright, R.",
+      title:
+        "“It takes skills to take a car”: Perceptual and procedural expertise in carjacking.",
+      citation: "Aggression and Violent Behavior, 20, 19–25.",
+      url: "https://www.sciencedirect.com/science/article/abs/pii/S1359178914001268",
+    },
+    {
+      year: "2015",
+      sort: 2015.1,
+      journalTag: "Adv. Criminological Theory",
+      authors: "Wright, R., Jacques, S., & Stein, M.",
+      title:
+        "Where are we? Why are we here? Where are we going? How do we get there? The future of qualitative research in American criminology.",
+      citation:
+        "In J. Miller & W. Palacios (Eds.), Qualitative Research in Criminology (Advances in Criminological Theory, Vol. 20, pp. 339–350). Transaction.",
+      url: "https://scottjacques.pubpub.org/pub/thefutureof-qualitativeresearchinamericancriminology/release/3",
+    },
+    {
       year: "2017",
       sort: 2017,
       journalTag: "Criminology",
