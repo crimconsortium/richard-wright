@@ -17,6 +17,19 @@
   const $$ = (sel, root = document) =>
     Array.prototype.slice.call(root.querySelectorAll(sel));
 
+  // Choose the right link target. When framed (e.g. inside the
+  // Perplexity component preview iframe on iOS Safari), `target="_blank"`
+  // is silently blocked by the popup blocker, so navigate the top frame
+  // instead. Top-level browsing contexts get the conventional new-tab.
+  let _isFramed;
+  function linkTarget() {
+    if (_isFramed === undefined) {
+      try { _isFramed = window.top !== window.self; }
+      catch (e) { _isFramed = true; }
+    }
+    return _isFramed ? "_top" : "_blank";
+  }
+
   /* ---------- Theme ---------- */
   function initTheme() {
     const root = document.documentElement;
@@ -165,7 +178,7 @@
     const titleHtml = it.url
       ? `<a class="article__title" href="${escapeAttr(
           it.url
-        )}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`
+        )}" target="${linkTarget()}" rel="noopener noreferrer">${escapeHtml(it.title)}</a>`
       : `<span class="article__title">${escapeHtml(it.title)}</span>`;
 
     const companion = it.companion
@@ -189,7 +202,7 @@
     const titleEl = c.url
       ? `<a class="article__companion-link" href="${escapeAttr(
           c.url
-        )}" target="_blank" rel="noopener"><em>${escapeHtml(c.title)}</em></a>`
+        )}" target="${linkTarget()}" rel="noopener noreferrer"><em>${escapeHtml(c.title)}</em></a>`
       : `<em>${escapeHtml(c.title)}</em>`;
     return `
       <div class="article__companion">
@@ -360,6 +373,16 @@
     return escapeHtml(str);
   }
 
+  // Retarget any static external links so they navigate the top frame
+  // when this page is loaded inside an iframe (e.g. preview embeds on iOS
+  // Safari, where target="_blank" is silently blocked).
+  function fixFramedLinks() {
+    if (linkTarget() !== "_top") return;
+    $$("a[target=_blank]").forEach((a) => {
+      a.setAttribute("target", "_top");
+    });
+  }
+
   /* ---------- Init ---------- */
   function init() {
     initTheme();
@@ -367,6 +390,7 @@
     renderTimelineList("timelineList", "position", "tl");
     renderModules();
     renderPhotos();
+    fixFramedLinks();
   }
 
   if (document.readyState === "loading") {
