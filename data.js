@@ -26,7 +26,7 @@ window.RW_DATA = {
     {
       year: "1974",
       sort: 1974,
-      category: "position",
+      category: "education",
       title: "B.A., Social Ecology",
       detail:
         "Bachelor of Arts in Social Ecology, University of California, Irvine.",
@@ -34,7 +34,7 @@ window.RW_DATA = {
     {
       year: "1976",
       sort: 1976,
-      category: "position",
+      category: "education",
       title: "M.A., Social Ecology",
       detail:
         "Master of Arts in Social Ecology, University of California, Irvine.",
@@ -42,7 +42,7 @@ window.RW_DATA = {
     {
       year: "1980",
       sort: 1980,
-      category: "position",
+      category: "education",
       title: "Ph.D., Criminology — University of Cambridge",
       detail:
         "Doctorate awarded by the Institute of Criminology, University of Cambridge.",
