@@ -152,21 +152,6 @@
     });
   }
 
-  /* ---------- Public scholarship ---------- */
-  function renderPublic() {
-    const list = document.getElementById("publicList");
-    if (!list) return;
-    DATA.publicScholarship.forEach((p) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <span class="pub-year">${escapeHtml(p.year)}</span>
-        <span class="pub-title">${escapeHtml(p.title)}</span>
-        <span class="pub-venue">${escapeHtml(p.venue)}</span>
-      `;
-      list.appendChild(li);
-    });
-  }
-
   /* ---------- Photos + Lightbox ---------- */
   function renderPhotos() {
     const grid = document.getElementById("photoGrid");
@@ -305,7 +290,6 @@
     initTheme();
     renderTimeline();
     renderModules();
-    renderPublic();
     renderPhotos();
   }
 

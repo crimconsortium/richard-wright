@@ -317,50 +317,6 @@ window.RW_DATA = {
         },
       ],
     },
-    {
-      label: "Public Scholarship",
-      title: "Public-facing work",
-      items: [
-        {
-          lead: "TEDx Peachtree",
-          text: " (2016) — The Ripple Effects of a Cashless Society.",
-        },
-        {
-          lead: "The Conversation",
-          text: " — essays on policing, urban unrest, and crime policy.",
-        },
-        {
-          lead: "Newsweek and other outlets",
-          text: " — commentary translating research for general readers.",
-        },
-      ],
-    },
-  ],
-
-  /* ------------------------------------------------------------
-     PUBLIC SCHOLARSHIP — selected, not exhaustive.
-     ------------------------------------------------------------ */
-  publicScholarship: [
-    {
-      year: "2018",
-      title: "College-Educated Cops Enforce the Law More Aggressively",
-      venue: "The Conversation",
-    },
-    {
-      year: "2016",
-      title: "The Ripple Effects of a Cashless Society",
-      venue: "TEDx Peachtree",
-    },
-    {
-      year: "2015",
-      title: "Why Ferguson Erupts",
-      venue: "The Conversation",
-    },
-    {
-      year: "2015",
-      title: "It Might Have Happened in Any City Suburb. So Why Ferguson?",
-      venue: "Newsweek",
-    },
   ],
 
   /* ------------------------------------------------------------
