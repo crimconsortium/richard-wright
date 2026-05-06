@@ -490,6 +490,12 @@ window.RW_DATA = {
      ------------------------------------------------------------ */
   photos: [
     {
+      src: "photos/4.jpg",
+      caption: "Richard, St. Louis, 2011",
+      year: "",
+      alt: "Studio portrait of Richard Wright in a gray shirt against a textured backdrop, St. Louis, 2011.",
+    },
+    {
       src: "photos/1.jpg",
       caption: "Richard at UMSL, St. Louis, 2013",
       year: "",
@@ -506,12 +512,6 @@ window.RW_DATA = {
       caption: "Richard with Rick Rosenfeld and Scott Jacques, Amsterdam, c2009",
       year: "",
       alt: "Richard Wright at a restaurant table in Amsterdam with Rick Rosenfeld and Scott Jacques, c. 2009.",
-    },
-    {
-      src: "photos/4.jpg",
-      caption: "Richard, St. Louis, 2011",
-      year: "",
-      alt: "Studio portrait of Richard Wright in a gray shirt against a textured backdrop, St. Louis, 2011.",
     },
     {
       src: "photos/5.jpg",
