@@ -441,19 +441,18 @@ code {
   border: 1px solid var(--rule);
 }
 @media (min-width: 980px) {
-  /* With 5 modules, prefer a 3+2 layout where the bottom row stretches
-     evenly rather than leaving an empty grid cell. */
+  /* Card order in the DOM (set by app.js):
+     1) Books, 2) Articles, 3) Honors, 4) Grants,
+     5) Editorial Leadership, 6) Administrative Leadership.
+     We use a 2-column track. Books and Articles are wide so the
+     longer lists have room to breathe; the four leadership/honors
+     cards pair up on rows below. */
   .modules {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
-  .module:nth-child(1),
-  .module:nth-child(2),
-  .module:nth-child(3) {
-    grid-column: span 2;
-  }
-  .module:nth-child(4),
-  .module:nth-child(5) {
-    grid-column: span 3;
+  .module--articles,
+  .module:first-child {
+    grid-column: 1 / -1;
   }
 }
 .module {
@@ -505,56 +504,47 @@ code {
   font-weight: 500;
 }
 
-/* ---------- Articles ---------- */
-.articles {
+/* ---------- Articles (chronological list inside a module card) ---------- */
+.articles-list {
   display: flex;
   flex-direction: column;
-  gap: var(--s-12);
-}
-.article-group__header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s-6);
-  padding-bottom: var(--s-3);
-  border-bottom: 1px solid var(--rule-strong);
-  margin-bottom: var(--s-5);
-  flex-wrap: wrap;
-}
-.article-group__title {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: var(--text-lg);
   margin: 0;
-  letter-spacing: -0.01em;
-  color: var(--fg);
-}
-.article-group__title em {
-  font-style: italic;
-}
-.article-group__note {
-  font-size: var(--text-xs);
-  letter-spacing: 0.04em;
-  color: var(--fg-subtle);
-  margin: 0;
-  max-width: 48ch;
-  text-align: right;
-  font-style: italic;
-}
-.article-group__list {
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  list-style: none;
 }
 .article {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: var(--s-6);
-  padding: var(--s-5) 0;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-4) 0;
   border-top: 1px solid var(--rule);
 }
-.article-group__list .article:first-child {
+.articles-list .article:first-child {
   border-top: none;
   padding-top: 0;
+}
+.articles-list .article:last-child {
+  padding-bottom: 0;
+}
+.article__head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-bottom: var(--s-1);
+}
+.article__tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--rule-strong);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .article__year {
   font-family: var(--serif);
@@ -892,15 +882,8 @@ a.article__title:hover {
     text-align: left;
   }
   .article {
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 56px 1fr;
     gap: var(--s-4);
-  }
-  .article-group__header {
-    flex-direction: column;
-    gap: var(--s-2);
-  }
-  .article-group__note {
-    text-align: left;
   }
   .article__companion {
     grid-template-columns: 1fr;

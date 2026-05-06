@@ -205,6 +205,9 @@ window.RW_DATA = {
   /* ------------------------------------------------------------
      ACHIEVEMENT MODULES — selective summaries by category.
      Each item supports an optional <strong> via the `lead` field.
+     The Articles section is rendered between the Books module and
+     the Honors module by app.js — no entry is required here for
+     it; just keep "Books" first and "Honors" second below.
      ------------------------------------------------------------ */
   modules: [
     {
@@ -320,152 +323,148 @@ window.RW_DATA = {
   ],
 
   /* ------------------------------------------------------------
-     SELECTED ARTICLES — grouped by journal.
-     Curated, not exhaustive: Wright's signature articles in three
-     flagship criminology journals (Criminology; British Journal of
-     Criminology; Journal of Research in Crime and Delinquency),
-     plus the cashless-crime paper in the Journal of Law and
-     Economics, followed by the related TEDx talk.
+     SELECTED ARTICLES — chronological.
+     Curated, not exhaustive. Drawn from three flagship criminology
+     journals (Criminology; British Journal of Criminology; Journal
+     of Research in Crime and Delinquency) plus the cashless-crime
+     paper in the Journal of Law and Economics. The related TEDx
+     talk is kept as a companion under that paper.
      Each entry: year, authors (string in publication order),
-     title, citation (volume/issue/pages), and an optional doi/url.
+     title, citation (volume/issue/pages), `journalTag` (short
+     label shown next to the entry), and a url.
      ------------------------------------------------------------ */
   articles: [
     {
-      groupId: "criminology",
-      groupLabel: "Criminology",
-      groupNote:
-        "Flagship journal of the American Society of Criminology.",
-      items: [
-        {
-          year: "1993",
-          authors: "Decker, S., Wright, R., & Logie, R.",
-          title: "Perceptual deterrence among active residential burglars: A research note.",
-          citation: "Criminology, 31(1), 135–147.",
-          url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.1993.tb01125.x",
-        },
-        {
-          year: "1999",
-          authors: "Jacobs, B. A., & Wright, R.",
-          title: "Stick-up, street culture, and offender motivation.",
-          citation: "Criminology, 37(1), 149–174.",
-          url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.1999.tb00482.x",
-        },
-        {
-          year: "2000",
-          authors: "Jacobs, B. A., Topalli, V., & Wright, R.",
-          title: "Managing retaliation: Drug robbery and informal sanction threats.",
-          citation: "Criminology, 38(1), 171–198.",
-          url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2000.tb00887.x",
-        },
-        {
-          year: "2011",
-          authors: "Jacques, S., & Wright, R.",
-          title: "Informal control and illicit drug trade.",
-          citation: "Criminology, 49(3), 729–765.",
-          url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2011.00234.x",
-        },
-        {
-          year: "2017",
-          authors: "Dickinson, T., & Wright, R.",
-          title: "The funny side of drug dealing: Risk, humor, and narrative identity.",
-          citation: "Criminology, 55(3), 691–720.",
-          url: "https://onlinelibrary.wiley.com/doi/10.1111/1745-9125.12148",
-        },
-      ],
+      year: "1992",
+      sort: 1992,
+      journalTag: "JRCD",
+      authors: "Wright, R., Decker, S. H., Redfern, A. K., & Smith, D. L.",
+      title:
+        "A snowball's chance in hell: Doing fieldwork with active residential burglars.",
+      citation: "Journal of Research in Crime and Delinquency, 29(2), 148–161.",
+      url: "https://journals.sagepub.com/doi/10.1177/0022427892029002003",
     },
     {
-      groupId: "bjc",
-      groupLabel: "British Journal of Criminology",
-      groupNote:
-        "Leading European journal of theoretical and empirical criminology.",
-      items: [
-        {
-          year: "2002",
-          authors: "Topalli, V., Wright, R., & Fornango, R.",
-          title:
-            "Drug dealers, robbery and retaliation: Vulnerability, deterrence and the contagion of violence.",
-          citation: "British Journal of Criminology, 42(2), 337–351.",
-          url: "https://academic.oup.com/bjc/article-abstract/42/2/337/310394",
-        },
-        {
-          year: "2003",
-          authors: "Rosenfeld, R., Jacobs, B. A., & Wright, R.",
-          title: "Snitching and the code of the street.",
-          citation: "British Journal of Criminology, 43(2), 291–309.",
-          url: "https://academic.oup.com/bjc/article/43/2/291/386681",
-        },
-        {
-          year: "2003",
-          authors: "Jacobs, B. A., Topalli, V., & Wright, R.",
-          title: "Carjacking, streetlife and offender motivation.",
-          citation: "British Journal of Criminology, 43(4), 673–688.",
-          url: "https://academic.oup.com/bjc/article-abstract/43/4/673/389790",
-        },
-      ],
+      year: "1993",
+      sort: 1993,
+      journalTag: "Criminology",
+      authors: "Decker, S., Wright, R., & Logie, R.",
+      title:
+        "Perceptual deterrence among active residential burglars: A research note.",
+      citation: "Criminology, 31(1), 135–147.",
+      url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.1993.tb01125.x",
     },
     {
-      groupId: "jrcd",
-      groupLabel: "Journal of Research in Crime and Delinquency",
-      groupNote:
-        "Methodological foundation for fieldwork with active offenders.",
-      items: [
-        {
-          year: "1992",
-          authors: "Wright, R., Decker, S. H., Redfern, A. K., & Smith, D. L.",
-          title:
-            "A snowball's chance in hell: Doing fieldwork with active residential burglars.",
-          citation: "Journal of Research in Crime and Delinquency, 29(2), 148–161.",
-          url: "https://journals.sagepub.com/doi/10.1177/0022427892029002003",
-        },
-        {
-          year: "1995",
-          authors: "Wright, R., Logie, R. H., & Decker, S. H.",
-          title:
-            "Criminal expertise and offender decision making: An experimental study of the target selection process in residential burglary.",
-          citation: "Journal of Research in Crime and Delinquency, 32(1), 39–53.",
-          url: "https://journals.sagepub.com/doi/10.1177/0022427895032001002",
-        },
-        {
-          year: "1998",
-          authors:
-            "Baumer, E., Lauritsen, J. L., Rosenfeld, R., & Wright, R.",
-          title:
-            "The influence of crack cocaine on robbery, burglary, and homicide rates: A cross-city, longitudinal analysis.",
-          citation: "Journal of Research in Crime and Delinquency, 35(3), 316–340.",
-          url: "https://journals.sagepub.com/doi/10.1177/0022427898035003004",
-        },
-        {
-          year: "2008",
-          authors: "Jacques, S., & Wright, R.",
-          title:
-            "Intimacy with outlaws: The role of relational distance in recruiting, paying, and interviewing underworld research participants.",
-          citation: "Journal of Research in Crime and Delinquency, 45(1), 22–38.",
-          url: "https://journals.sagepub.com/doi/10.1177/0022427807309439",
-        },
-      ],
+      year: "1995",
+      sort: 1995,
+      journalTag: "JRCD",
+      authors: "Wright, R., Logie, R. H., & Decker, S. H.",
+      title:
+        "Criminal expertise and offender decision making: An experimental study of the target selection process in residential burglary.",
+      citation: "Journal of Research in Crime and Delinquency, 32(1), 39–53.",
+      url: "https://journals.sagepub.com/doi/10.1177/0022427895032001002",
     },
     {
-      groupId: "jle",
-      groupLabel: "Journal of Law and Economics",
-      groupNote:
-        "Wright's principal contribution to the economics of crime — the empirical basis for the cashless-society line of work.",
-      items: [
-        {
-          year: "2017",
-          authors:
-            "Wright, R., Tekin, E., Topalli, V., & McClellan, C.",
-          title:
-            "Less cash, less crime: Evidence from the Electronic Benefit Transfer program.",
-          citation: "Journal of Law and Economics, 60(2), 361–383.",
-          url: "https://www.journals.uchicago.edu/doi/10.1086/693745",
-          companion: {
-            label: "Related talk",
-            year: "2016",
-            title: "The Ripple Effects of a Cashless Society",
-            venue: "TEDx Peachtree",
-          },
-        },
-      ],
+      year: "1998",
+      sort: 1998,
+      journalTag: "JRCD",
+      authors: "Baumer, E., Lauritsen, J. L., Rosenfeld, R., & Wright, R.",
+      title:
+        "The influence of crack cocaine on robbery, burglary, and homicide rates: A cross-city, longitudinal analysis.",
+      citation: "Journal of Research in Crime and Delinquency, 35(3), 316–340.",
+      url: "https://journals.sagepub.com/doi/10.1177/0022427898035003004",
+    },
+    {
+      year: "1999",
+      sort: 1999,
+      journalTag: "Criminology",
+      authors: "Jacobs, B. A., & Wright, R.",
+      title: "Stick-up, street culture, and offender motivation.",
+      citation: "Criminology, 37(1), 149–174.",
+      url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.1999.tb00482.x",
+    },
+    {
+      year: "2000",
+      sort: 2000,
+      journalTag: "Criminology",
+      authors: "Jacobs, B. A., Topalli, V., & Wright, R.",
+      title:
+        "Managing retaliation: Drug robbery and informal sanction threats.",
+      citation: "Criminology, 38(1), 171–198.",
+      url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2000.tb00887.x",
+    },
+    {
+      year: "2002",
+      sort: 2002,
+      journalTag: "BJC",
+      authors: "Topalli, V., Wright, R., & Fornango, R.",
+      title:
+        "Drug dealers, robbery and retaliation: Vulnerability, deterrence and the contagion of violence.",
+      citation: "British Journal of Criminology, 42(2), 337–351.",
+      url: "https://academic.oup.com/bjc/article-abstract/42/2/337/310394",
+    },
+    {
+      year: "2003",
+      sort: 2003,
+      journalTag: "BJC",
+      authors: "Rosenfeld, R., Jacobs, B. A., & Wright, R.",
+      title: "Snitching and the code of the street.",
+      citation: "British Journal of Criminology, 43(2), 291–309.",
+      url: "https://academic.oup.com/bjc/article/43/2/291/386681",
+    },
+    {
+      year: "2003",
+      sort: 2003.1,
+      journalTag: "BJC",
+      authors: "Jacobs, B. A., Topalli, V., & Wright, R.",
+      title: "Carjacking, streetlife and offender motivation.",
+      citation: "British Journal of Criminology, 43(4), 673–688.",
+      url: "https://academic.oup.com/bjc/article-abstract/43/4/673/389790",
+    },
+    {
+      year: "2008",
+      sort: 2008,
+      journalTag: "JRCD",
+      authors: "Jacques, S., & Wright, R.",
+      title:
+        "Intimacy with outlaws: The role of relational distance in recruiting, paying, and interviewing underworld research participants.",
+      citation: "Journal of Research in Crime and Delinquency, 45(1), 22–38.",
+      url: "https://journals.sagepub.com/doi/10.1177/0022427807309439",
+    },
+    {
+      year: "2011",
+      sort: 2011,
+      journalTag: "Criminology",
+      authors: "Jacques, S., & Wright, R.",
+      title: "Informal control and illicit drug trade.",
+      citation: "Criminology, 49(3), 729–765.",
+      url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2011.00234.x",
+    },
+    {
+      year: "2017",
+      sort: 2017,
+      journalTag: "Criminology",
+      authors: "Dickinson, T., & Wright, R.",
+      title:
+        "The funny side of drug dealing: Risk, humor, and narrative identity.",
+      citation: "Criminology, 55(3), 691–720.",
+      url: "https://onlinelibrary.wiley.com/doi/10.1111/1745-9125.12148",
+    },
+    {
+      year: "2017",
+      sort: 2017.1,
+      journalTag: "J. Law & Econ.",
+      authors: "Wright, R., Tekin, E., Topalli, V., & McClellan, C.",
+      title:
+        "Less cash, less crime: Evidence from the Electronic Benefit Transfer program.",
+      citation: "Journal of Law and Economics, 60(2), 361–383.",
+      url: "https://www.journals.uchicago.edu/doi/10.1086/693745",
+      companion: {
+        label: "Related talk",
+        year: "2016",
+        title: "The Ripple Effects of a Cashless Society",
+        venue: "TEDx Peachtree",
+      },
     },
   ],
 
