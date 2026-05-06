@@ -64,7 +64,7 @@
   --s-20: 5rem;
   --s-24: 6rem;
 
-  --container: 1480px;
+  --container: 100%;
   --radius: 2px;
 }
 
@@ -163,7 +163,7 @@ code {
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--s-6);
+  padding: 0 clamp(var(--s-6), 4vw, var(--s-10));
 }
 
 .section {
@@ -228,7 +228,6 @@ code {
   font-size: var(--text-md);
   line-height: 1.55;
   color: var(--fg-muted);
-  max-width: 80ch;
   margin: 0 0 var(--s-10);
 }
 .hero__nav {
