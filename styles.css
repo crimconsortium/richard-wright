@@ -670,7 +670,6 @@ a.article__title:hover {
   gap: var(--s-4);
 }
 .photo-card {
-  aspect-ratio: 4 / 5;
   background: var(--bg-elev);
   border: 1px solid var(--rule);
   display: flex;
@@ -687,7 +686,7 @@ a.article__title:hover {
   transform: scale(1.02);
 }
 .photo-card__media {
-  flex: 1;
+  aspect-ratio: 4 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -698,6 +697,7 @@ a.article__title:hover {
     var(--bg-sunken) 100%
   );
   position: relative;
+  overflow: hidden;
   transition: transform 0.4s ease;
 }
 .photo-card__media img {
