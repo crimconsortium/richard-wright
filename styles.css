@@ -64,7 +64,7 @@
   --s-20: 5rem;
   --s-24: 6rem;
 
-  --container: 1120px;
+  --container: 1480px;
   --radius: 2px;
 }
 
@@ -175,7 +175,6 @@ code {
 }
 
 .section__header {
-  max-width: 56ch;
   margin-bottom: var(--s-12);
 }
 .section__eyebrow {
@@ -224,13 +223,12 @@ code {
   line-height: 1.02;
   letter-spacing: -0.02em;
   margin: 0 0 var(--s-5);
-  max-width: 18ch;
 }
 .hero__lede {
   font-size: var(--text-md);
   line-height: 1.55;
   color: var(--fg-muted);
-  max-width: 60ch;
+  max-width: 80ch;
   margin: 0 0 var(--s-10);
 }
 .hero__nav {
@@ -429,7 +427,6 @@ code {
   color: var(--fg-muted);
   font-size: var(--text-sm);
   line-height: 1.65;
-  max-width: 64ch;
 }
 
 /* ---------- Modules ---------- */
@@ -610,6 +607,16 @@ a.article__title:hover {
 }
 .article__companion-body em {
   font-style: italic;
+}
+.article__companion-link {
+  color: var(--fg);
+  border-bottom: 1px solid var(--rule-strong);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.article__companion-link:hover {
+  border-bottom-color: var(--fg);
+  text-decoration: none;
 }
 .article__companion-year {
   font-family: var(--serif);
@@ -833,7 +840,6 @@ a.article__title:hover {
 }
 .site-footer p {
   margin: 0 0 var(--s-2);
-  max-width: 70ch;
 }
 .site-footer__credit {
   color: var(--fg-muted);

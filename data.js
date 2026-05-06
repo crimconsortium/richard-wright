@@ -212,79 +212,95 @@ window.RW_DATA = {
   modules: [
     {
       label: "Books",
-      title: "Selected books",
+      title: "Books",
       items: [
         {
-          lead: "Burglars on the Job",
-          text: " (1994), with Scott Decker — ethnography of active residential burglars.",
+          year: "1994",
+          sort: 1994,
+          authors: "Wright, R., & Decker, S.",
+          title: "Burglars on the Job: Streetlife and Residential Break-Ins.",
+          citation: "Northeastern University Press.",
+          url: "https://books.google.com/books/about/Burglars_on_the_Job.html?id=ZOv3b5SEl4YC",
         },
         {
-          lead: "Armed Robbers in Action",
-          text: " (1997), with Scott Decker — street-level analysis of stickup offenders.",
+          year: "1997",
+          sort: 1997,
+          authors: "Wright, R., & Decker, S.",
+          title: "Armed Robbers in Action: Stickups and Street Culture.",
+          citation: "Northeastern University Press.",
+          url: "https://books.google.com/books/about/Armed_Robbers_in_Action.html?id=CZXaAAAAMAAJ",
         },
         {
-          lead: "Street Justice",
-          text: " (2006), with Bruce Jacobs — retaliation and informal social control on the street.",
+          year: "2006",
+          sort: 2006,
+          authors: "Jacobs, B. A., & Wright, R.",
+          title: "Street Justice: Retaliation in the Criminal Underworld.",
+          citation: "Cambridge University Press.",
+          url: "https://www.cambridge.org/core/books/street-justice/A95CBA9DEAFC56E1B5894493B5095B7D",
         },
         {
-          lead: "Code of the Suburb",
-          text: " (2015), with Scott Jacques — middle-class adolescent drug dealers in suburban Atlanta.",
+          year: "2015",
+          sort: 2015,
+          authors: "Jacques, S., & Wright, R.",
+          title: "Code of the Suburb: Inside the World of Young Middle-Class Drug Dealers.",
+          citation: "University of Chicago Press.",
+          url: "https://press.uchicago.edu/ucp/books/book/chicago/C/bo19986235.html",
         },
       ],
     },
     {
       label: "Honors",
-      title: "Major honors",
+      title: "Honors",
       items: [
         {
-          lead: "Fellow, American Society of Criminology",
-          text: " (2009).",
+          lead: "",
+          text: "Chancellor’s Award for Excellence in Research, UM–St. Louis (2004).",
         },
         {
-          lead: "Regents’ Professor",
-          text: ", University System of Georgia (2017).",
+          lead: "",
+          text: "Curators’ Professor, University of Missouri (2005).",
         },
         {
-          lead: "Curators’ Professor",
-          text: ", University of Missouri (2005).",
+          lead: "",
+          text: "Fellow, American Society of Criminology (2009).",
         },
         {
-          lead: "Chancellor’s Award for Excellence in Research",
-          text: ", UM–St. Louis (2004).",
+          lead: "",
+          text: "Chancellor’s Award for Excellence in Service, UM–St. Louis (2011).",
         },
         {
-          lead: "Chancellor’s Award for Excellence in Service",
-          text: ", UM–St. Louis (2011).",
+          lead: "",
+          text: "Regents’ Professor, University System of Georgia (2017).",
         },
       ],
     },
     {
       label: "Grants",
-      title: "Selected external grants",
+      title: "Grants",
       items: [
         {
-          lead: "National Science Foundation",
-          text: " (2008–2010) — research on offender decision-making.",
-        },
-        {
-          lead: "Irish Research Council",
-          text: " (2003–2006) — comparative fieldwork on offending.",
-        },
-        {
-          lead: "Harry Frank Guggenheim Foundation",
-          text: " — multiple awards supporting research on violence.",
-        },
-        {
-          lead: "National Consortium on Violence Research",
-          text: " — funded studies on street-level violence.",
+          lead: "U.S. Department of Education",
+          text: " — funding for graduate training in criminology.",
         },
         {
           lead: "National Institute of Justice",
           text: " — multiple grants on offender behavior and crime control.",
         },
         {
-          lead: "U.S. Department of Education",
-          text: " — funding for graduate training in criminology.",
+          lead: "National Consortium on Violence Research",
+          text: " — funded studies on street-level violence.",
+        },
+        {
+          lead: "Irish Research Council",
+          text: " (2003–2006) — comparative fieldwork on offending.",
+        },
+        {
+          lead: "National Science Foundation",
+          text: " (2008–2010) — research on drug market conflict in Amsterdam.",
+        },
+        {
+          lead: "Harry Frank Guggenheim Foundation",
+          text: " — multiple awards supporting research on violence.",
         },
       ],
     },
@@ -300,10 +316,6 @@ window.RW_DATA = {
           lead: "Editor-in-Chief, Oxford Bibliographies Online: Criminology",
           text: " (2012–2014).",
         },
-        {
-          lead: "Editorial advisory roles",
-          text: " for the British Journal of Criminology, the British Journal of Sociology, and the Oxford Research Encyclopedia.",
-        },
       ],
     },
     {
@@ -312,7 +324,7 @@ window.RW_DATA = {
       items: [
         {
           lead: "Chair, Department of Criminology and Criminal Justice",
-          text: ", University of Missouri–St. Louis.",
+          text: ", University of Missouri–St. Louis (1998–2001; 2006–2009).",
         },
         {
           lead: "Chair, Department of Criminal Justice and Criminology",
@@ -464,6 +476,7 @@ window.RW_DATA = {
         year: "2016",
         title: "The Ripple Effects of a Cashless Society",
         venue: "TEDx Peachtree",
+        url: "https://www.youtube.com/watch?v=iSKURdhWCss",
       },
     },
   ],

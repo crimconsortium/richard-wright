@@ -60,30 +60,6 @@
     <header class="hero" role="banner">
       <div class="container">
         <div class="hero__row">
-          <div class="hero__mark" aria-hidden="true">
-            <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
-              <rect
-                x="1"
-                y="1"
-                width="38"
-                height="38"
-                stroke="currentColor"
-                stroke-width="1.25"
-              />
-              <text
-                x="50%"
-                y="58%"
-                text-anchor="middle"
-                font-family="Source Serif 4, Georgia, serif"
-                font-size="16"
-                font-weight="600"
-                fill="currentColor"
-              >
-                RW
-              </text>
-            </svg>
-          </div>
-
           <button
             id="themeToggle"
             class="theme-toggle"
@@ -152,78 +128,10 @@
       >
         <div class="container">
           <header class="section__header">
-            <p class="section__eyebrow">01 — Career Timeline</p>
             <h2 id="timeline-heading" class="section__title">
-              Major milestones
-            </h2>
-            <p class="section__intro">
-              A chronological record of verified appointments, books, honors,
-              and editorial roles. Use the filters to narrow by category.
-            </p>
-          </header>
-
-          <div
-            class="filters"
-            role="toolbar"
-            aria-label="Filter timeline by category"
-          >
-            <button
-              class="filter is-active"
-              data-filter="all"
-              type="button"
-              aria-pressed="true"
-            >
-              All
-            </button>
-            <button
-              class="filter"
-              data-filter="position"
-              type="button"
-              aria-pressed="false"
-            >
               Positions
-            </button>
-            <button
-              class="filter"
-              data-filter="publication"
-              type="button"
-              aria-pressed="false"
-            >
-              Publications
-            </button>
-            <button
-              class="filter"
-              data-filter="award"
-              type="button"
-              aria-pressed="false"
-            >
-              Awards
-            </button>
-            <button
-              class="filter"
-              data-filter="grant"
-              type="button"
-              aria-pressed="false"
-            >
-              Grants
-            </button>
-            <button
-              class="filter"
-              data-filter="editorial"
-              type="button"
-              aria-pressed="false"
-            >
-              Editorial
-            </button>
-            <button
-              class="filter"
-              data-filter="administrative"
-              type="button"
-              aria-pressed="false"
-            >
-              Administrative
-            </button>
-          </div>
+            </h2>
+          </header>
 
           <ol id="timelineList" class="timeline" aria-live="polite"></ol>
         </div>
@@ -239,14 +147,9 @@
       >
         <div class="container">
           <header class="section__header">
-            <p class="section__eyebrow">02 — Achievements</p>
             <h2 id="modules-heading" class="section__title">
               Selected contributions
             </h2>
-            <p class="section__intro">
-              High-level summaries by category. Lists are selective rather than
-              exhaustive.
-            </p>
           </header>
 
           <div id="modulesGrid" class="modules"></div>
@@ -263,12 +166,7 @@
       >
         <div class="container">
           <header class="section__header">
-            <p class="section__eyebrow">03 — Photos</p>
-            <h2 id="photos-heading" class="section__title">Photo gallery</h2>
-            <p class="section__intro">
-              Placeholder thumbnails. Replace items in
-              <code>data.js</code> with real images and captions when ready.
-            </p>
+            <h2 id="photos-heading" class="section__title">Photos</h2>
           </header>
 
           <ul id="photoGrid" class="photo-grid"></ul>

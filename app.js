@@ -17,16 +17,6 @@
   const $$ = (sel, root = document) =>
     Array.prototype.slice.call(root.querySelectorAll(sel));
 
-  const CATEGORY_LABELS = {
-    position: "Position",
-    publication: "Publication",
-    award: "Award",
-    grant: "Grant",
-    editorial: "Editorial",
-    administrative: "Administrative",
-    public: "Talk",
-  };
-
   /* ---------- Theme ---------- */
   function initTheme() {
     const root = document.documentElement;
@@ -54,13 +44,14 @@
     syncUI();
   }
 
-  /* ---------- Timeline ---------- */
+  /* ---------- Timeline (positions only) ---------- */
   function renderTimeline() {
     const list = document.getElementById("timelineList");
     if (!list) return;
 
     const items = DATA.timeline
       .slice()
+      .filter((item) => item.category === "position")
       .sort((a, b) => a.sort - b.sort)
       .map((item, i) => {
         const li = document.createElement("li");
@@ -81,9 +72,6 @@
               aria-controls="${panelId}"
             >
               <h3 class="timeline__title">${escapeHtml(item.title)}</h3>
-              <span class="timeline__cat">${escapeHtml(
-                CATEGORY_LABELS[item.category] || ""
-              )}</span>
               <svg class="timeline__caret" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M3 6l5 5 5-5"/>
               </svg>
@@ -106,23 +94,6 @@
       });
 
     items.forEach((el) => list.appendChild(el));
-
-    /* Filters */
-    const filters = $$(".filter");
-    filters.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const value = btn.dataset.filter;
-        filters.forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle("is-active", active);
-          b.setAttribute("aria-pressed", active ? "true" : "false");
-        });
-        $$(".timeline__item", list).forEach((li) => {
-          const match = value === "all" || li.dataset.category === value;
-          li.classList.toggle("is-hidden", !match);
-        });
-      });
-    });
   }
 
   /* ---------- Modules + Articles ---------- */
@@ -143,8 +114,37 @@
   function buildModuleCard(mod) {
     const el = document.createElement("article");
     el.className = "module";
+
+    // Detect the citation/article-style layout (used for Books):
+    // every item has a `title` and `authors` field instead of `lead`/`text`.
+    const isCitationStyle =
+      Array.isArray(mod.items) &&
+      mod.items.length > 0 &&
+      mod.items.every(
+        (it) => typeof it.title === "string" && typeof it.authors === "string"
+      );
+
+    if (isCitationStyle) {
+      el.classList.add("module--articles");
+      const items = mod.items
+        .slice()
+        .sort((a, b) => {
+          const sa =
+            typeof a.sort === "number" ? a.sort : parseFloat(a.year) || 0;
+          const sb =
+            typeof b.sort === "number" ? b.sort : parseFloat(b.year) || 0;
+          return sa - sb;
+        })
+        .map((it) => citationItemHtml(it))
+        .join("");
+      el.innerHTML = `
+        <h3 class="module__title">${escapeHtml(mod.title)}</h3>
+        <ol class="articles-list">${items}</ol>
+      `;
+      return el;
+    }
+
     el.innerHTML = `
-      <p class="module__label">${escapeHtml(mod.label)}</p>
       <h3 class="module__title">${escapeHtml(mod.title)}</h3>
       <ul class="module__list">
         ${mod.items
@@ -161,6 +161,51 @@
     return el;
   }
 
+  function citationItemHtml(it) {
+    const titleHtml = it.url
+      ? `<a class="article__title" href="${escapeAttr(
+          it.url
+        )}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`
+      : `<span class="article__title">${escapeHtml(it.title)}</span>`;
+
+    const companion = it.companion
+      ? buildCompanionHtml(it.companion)
+      : "";
+
+    return `
+      <li class="article">
+        <div class="article__year">${escapeHtml(it.year)}</div>
+        <div class="article__body">
+          <p class="article__authors">${escapeHtml(it.authors)}</p>
+          ${titleHtml}
+          <p class="article__cite">${escapeHtml(it.citation || "")}</p>
+          ${companion}
+        </div>
+      </li>
+    `;
+  }
+
+  function buildCompanionHtml(c) {
+    const titleEl = c.url
+      ? `<a class="article__companion-link" href="${escapeAttr(
+          c.url
+        )}" target="_blank" rel="noopener"><em>${escapeHtml(c.title)}</em></a>`
+      : `<em>${escapeHtml(c.title)}</em>`;
+    return `
+      <div class="article__companion">
+        <span class="article__companion-label">${escapeHtml(
+          c.label || "Related"
+        )}</span>
+        <span class="article__companion-body">
+          <span class="article__companion-year">${escapeHtml(
+            c.year || ""
+          )}</span>
+          ${titleEl}${c.venue ? ` &mdash; ${escapeHtml(c.venue)}` : ""}
+        </span>
+      </div>
+    `;
+  }
+
   function buildArticlesCard() {
     const articles = DATA.articles;
     if (!articles || !articles.length) return null;
@@ -171,62 +216,12 @@
       return sa - sb;
     });
 
-    const items = sorted
-      .map((it) => {
-        const titleHtml = it.url
-          ? `<a class="article__title" href="${escapeAttr(
-              it.url
-            )}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`
-          : `<span class="article__title">${escapeHtml(it.title)}</span>`;
-
-        const tag = it.journalTag
-          ? `<span class="article__tag" aria-label="Journal: ${escapeAttr(
-              it.journalTag
-            )}">${escapeHtml(it.journalTag)}</span>`
-          : "";
-
-        const companion = it.companion
-          ? `
-            <div class="article__companion">
-              <span class="article__companion-label">${escapeHtml(
-                it.companion.label || "Related"
-              )}</span>
-              <span class="article__companion-body">
-                <span class="article__companion-year">${escapeHtml(
-                  it.companion.year || ""
-                )}</span>
-                <em>${escapeHtml(it.companion.title)}</em>${
-                  it.companion.venue
-                    ? ` &mdash; ${escapeHtml(it.companion.venue)}`
-                    : ""
-                }
-              </span>
-            </div>
-          `
-          : "";
-
-        return `
-          <li class="article">
-            <div class="article__year">${escapeHtml(it.year)}</div>
-            <div class="article__body">
-              <div class="article__head">
-                ${tag}
-                <p class="article__authors">${escapeHtml(it.authors)}</p>
-              </div>
-              ${titleHtml}
-              <p class="article__cite">${escapeHtml(it.citation)}</p>
-              ${companion}
-            </div>
-          </li>
-        `;
-      })
-      .join("");
+    const items = sorted.map((it) => citationItemHtml(it)).join("");
 
     const el = document.createElement("article");
     el.className = "module module--articles";
     el.innerHTML = `
-      <p class="module__label">Articles</p>
-      <h3 class="module__title">Selected articles</h3>
+      <h3 class="module__title">Articles</h3>
       <ol class="articles-list">${items}</ol>
     `;
     return el;
