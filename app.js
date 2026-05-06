@@ -152,6 +152,77 @@
     });
   }
 
+  /* ---------- Articles ---------- */
+  function renderArticles() {
+    const root = document.getElementById("articlesList");
+    if (!root || !DATA.articles) return;
+
+    DATA.articles.forEach((group) => {
+      const section = document.createElement("section");
+      section.className = "article-group";
+      section.setAttribute("aria-labelledby", `ag-${group.groupId}`);
+
+      const items = group.items
+        .map((it) => {
+          const titleHtml = it.url
+            ? `<a class="article__title" href="${escapeAttr(
+                it.url
+              )}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`
+            : `<span class="article__title">${escapeHtml(it.title)}</span>`;
+
+          const companion = it.companion
+            ? `
+              <div class="article__companion">
+                <span class="article__companion-label">${escapeHtml(
+                  it.companion.label || "Related"
+                )}</span>
+                <span class="article__companion-body">
+                  <span class="article__companion-year">${escapeHtml(
+                    it.companion.year || ""
+                  )}</span>
+                  <em>${escapeHtml(it.companion.title)}</em>${
+                    it.companion.venue
+                      ? ` &mdash; ${escapeHtml(it.companion.venue)}`
+                      : ""
+                  }
+                </span>
+              </div>
+            `
+            : "";
+
+          return `
+            <li class="article">
+              <div class="article__year">${escapeHtml(it.year)}</div>
+              <div class="article__body">
+                <p class="article__authors">${escapeHtml(it.authors)}</p>
+                ${titleHtml}
+                <p class="article__cite">${escapeHtml(it.citation)}</p>
+                ${companion}
+              </div>
+            </li>
+          `;
+        })
+        .join("");
+
+      section.innerHTML = `
+        <header class="article-group__header">
+          <h3 class="article-group__title" id="ag-${escapeAttr(
+            group.groupId
+          )}"><em>${escapeHtml(group.groupLabel)}</em></h3>
+          ${
+            group.groupNote
+              ? `<p class="article-group__note">${escapeHtml(
+                  group.groupNote
+                )}</p>`
+              : ""
+          }
+        </header>
+        <ol class="article-group__list">${items}</ol>
+      `;
+      root.appendChild(section);
+    });
+  }
+
   /* ---------- Photos + Lightbox ---------- */
   function renderPhotos() {
     const grid = document.getElementById("photoGrid");
@@ -290,6 +361,7 @@
     initTheme();
     renderTimeline();
     renderModules();
+    renderArticles();
     renderPhotos();
   }
 
